@@ -1,0 +1,8 @@
+{
+  "name": "Arjun Shah: The 13yo Founder",
+  "description": "An award-winning, maximalist portfolio for Arjun Shah, blending Neo-brutalism, Glassmorphism, and AI-powered interactions.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}

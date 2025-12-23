@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ARJUN SHAH // THE ARCHITECT</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;700&family=Syne:wght@800&family=Fira+Code:wght@700&family=Unbounded:wght@900&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --neon: #00ff41; /* Matrix Green */
+        --blood: #ff0000;
+        --void: #000000;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: var(--void);
+        color: white;
+        font-family: 'Space Grotesk', sans-serif;
+        overflow-x: hidden;
+        cursor: none;
+      }
+      .syne { font-family: 'Syne', sans-serif; }
+      .unbounded { font-family: 'Unbounded', cursive; }
+      .mono { font-family: 'Fira Code', monospace; }
+
+      /* SVG DISTORTION ENGINE */
+      .distort-active {
+        filter: url(#distort);
+      }
+      
+      /* BRUTALIST SCROLLBAR */
+      ::-webkit-scrollbar { width: 20px; }
+      ::-webkit-scrollbar-track { background: var(--void); }
+      ::-webkit-scrollbar-thumb {
+        background: white;
+        border: 5px solid var(--void);
+      }
+
+      /* PERSPECTIVE WRAPPERS */
+      .scene-3d { perspective: 2000px; transform-style: preserve-3d; }
+      
+      /* TEXT OUTLINES */
+      .text-void {
+        -webkit-text-stroke: 1px rgba(255,255,255,0.3);
+        color: transparent;
+      }
+
+      .glitch-text:hover {
+        animation: glitch-anim 0.2s infinite;
+      }
+
+      @keyframes glitch-anim {
+        0% { transform: translate(0); }
+        20% { transform: translate(-5px, 5px); color: var(--neon); }
+        40% { transform: translate(5px, -5px); color: var(--blood); }
+        100% { transform: translate(0); }
+      }
+    </style>
+    <script type="importmap">
+    {
+      "imports": {
+        "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+        "react/": "https://esm.sh/react@^19.2.3/",
+        "react": "https://esm.sh/react@^19.2.3",
+        "lucide-react": "https://esm.sh/lucide-react@^0.474.0",
+        "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
+        "recharts": "https://esm.sh/recharts@^3.6.0"
+      }
+    }
+    </script>
+  <link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <svg style="position: absolute; width: 0; height: 0;">
+      <filter id="distort">
+        <feTurbulence type="fractalNoise" baseFrequency="0.01 0.1" numOctaves="2" result="noise" seed="1" />
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="20" />
+      </filter>
+    </svg>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
